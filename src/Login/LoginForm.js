@@ -3,26 +3,20 @@ import { Link } from 'react-router-dom';
 import Button from '../components/Form/Button';
 import Input from '../components/Form/Input';
 import useForm from '../components/useForm';
+import { UserContext } from '../UserContext';
 
-// import { Container } from './styles';
 
 function LoginForm() {
   const username = useForm()
   const password = useForm()
 
-  function handleSubmit(event) {
+  const { userLogin, error, loading } = React.useContext(UserContext)
+
+  async function handleSubmit(event) {
     event.preventDefault()
 
     if (username.validate() && password.validate()) {
-      fetch('https://dogsapi.origamid.dev/json/jwt-auth/v1/token', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify()
-      }).then(response => {
-        return
-      })
+      userLogin(username.value, password.value)
     }
 
   }
@@ -43,7 +37,11 @@ function LoginForm() {
           name="password"
           {...password}
         />
-        <Button>Entrar</Button>
+        {loading ?
+          (<Button disabled>Carregando...</Button>)
+          : (<Button>Entrar</Button>)}
+
+        {error && <p>{error}</p>}
       </form>
       <Link to='/login/criar'>Cadastro</Link>
     </section>
