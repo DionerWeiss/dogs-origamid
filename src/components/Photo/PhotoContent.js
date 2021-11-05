@@ -6,7 +6,6 @@ import styles from './PhotoContent.module.css'
 
 const PhotoContent = ({ data }) => {
   const { photo, comments } = data
-  console.log(data);
 
   return (
     <div className={styles.photo}>
