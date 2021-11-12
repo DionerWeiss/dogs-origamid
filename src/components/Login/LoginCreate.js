@@ -6,6 +6,7 @@ import Input from '../Form/Input';
 import useForm from '../../hooks/useForm';
 import useFetch from '../../hooks/useFetch';
 import Error from '../Helper/Error'
+import Head from '../Helper/Head';
 
 
 function LoginCreate() {
@@ -31,6 +32,7 @@ function LoginCreate() {
 
   return (
     <section className="animeLeft">
+      <Head title='Crie sua conta' />
       <h1 className="title">Cadastre-se</h1>
       <form onSubmit={handleSubmit}>
         <Input label="Usuário" type="text" name="username" {...username} />

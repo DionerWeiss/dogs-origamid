@@ -6,6 +6,7 @@ import useForm from '../../hooks/useForm';
 import Button from '../Form/Button';
 import Input from '../Form/Input';
 import Error from '../Helper/Error';
+import Head from '../Helper/Head';
 
 function LoginPasswordReset() {
   const [login, setLogin] = React.useState('')
@@ -43,6 +44,7 @@ function LoginPasswordReset() {
 
   return (
     <div>
+      <Head title='Resete sua senha' />
       <h1 className="title">Resete a senha</h1>
       <form onSubmit={handleSubmit}>
         <Input label="Nova Senha" type="password" name="password" {...password} />
